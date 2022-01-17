@@ -1,5 +1,6 @@
 package com.brian.casouso.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	}
 	
-	
+	@Override
+	public List<Employee> getEmployeesByFilter(Employee employee) {
+		String firstName = employee.getFirstName().isBlank() ? null : employee.getFirstName();
+		String lastName = employee.getLastName().isBlank() ? null : employee.getLastName();
+		String position = employee.getPosition().isBlank() ? null : employee.getPosition();
+		List<Employee> empleados = repository.findByFilters(firstName, lastName, position);
+		return empleados;
+	}
 	
 /*
  * Mapeando todo

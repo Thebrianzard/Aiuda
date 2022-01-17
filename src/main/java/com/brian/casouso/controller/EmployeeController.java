@@ -29,6 +29,14 @@ public class EmployeeController {
 	@GetMapping("/employeeFind")
 	public String getEmployeeFind(Model model) {
 		model.addAttribute("employeeList", employeeService.getAllEmployees());
+		model.addAttribute("employee", new Employee());
+		return "employee-find";
+	}
+	
+	@GetMapping("/findEmployee")
+	public String findEmployee(@ModelAttribute("employeeForm") Employee employee, BindingResult result, Model model) {
+		model.addAttribute("employeeList", employeeService.getEmployeesByFilter(employee));
+		model.addAttribute("employee", employee);
 		return "employee-find";
 	}
 

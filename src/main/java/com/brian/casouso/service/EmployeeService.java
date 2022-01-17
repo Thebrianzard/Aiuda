@@ -1,6 +1,8 @@
 package com.brian.casouso.service;
 
 
+import java.util.List;
+
 import com.brian.casouso.entity.Employee;
 
 public interface EmployeeService {
@@ -12,4 +14,6 @@ public interface EmployeeService {
 	public Employee getEmployeeById(Long id) throws Exception;
 	
 	public Employee updateEmployee(Employee employee) throws Exception;
+		
+	public List<Employee> getEmployeesByFilter(Employee employee);
 }
